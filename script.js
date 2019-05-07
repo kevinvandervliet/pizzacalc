@@ -58,6 +58,12 @@ var toppings = [
    Price: 0.5,
    Selected: false,
 
+ },
+ {
+   Name:"4 Cheese",
+   Price: 1.5,
+   Selected: false,
+
  }
 ];
 
@@ -165,6 +171,7 @@ var tche = document.getElementById('t0');
 var tchi = document.getElementById('t1');
 var tbbq = document.getElementById('t2');
 var toli = document.getElementById('t3');
+var t4ch = document.getElementById('t4');
 
 
 //size ophalen
@@ -184,7 +191,7 @@ var sizelist = document.getElementById('sizeNameList');
     item.setAttribute("id" , "s" + i)
     }
 
-    //get all toppings by id
+    //get all size by id
     var snor = document.getElementById('s0');
     var smed = document.getElementById('s1');
     var slar = document.getElementById('s2');
@@ -206,11 +213,12 @@ var sizelist = document.getElementById('sizeNameList');
     //add id to the topping
     item.setAttribute("id" , "sl" + i)
           }
-    //get all toppings by id
+    //get all slice by id
     var slun = document.getElementById('sl0');
     var sltwo = document.getElementById('sl1');
     var slfou = document.getElementById('sl2');
     var slsix = document.getElementById('sl3');
+    var slfiv = document.getElementById('sl4');
 
 
 //additionallist
@@ -257,25 +265,24 @@ function selectPizza(Selected) {
         ppol.onclick = function () {selectPizza('Pollo');}
 
 function selectTopping(Selected) {
-// loop over alles in de Topping array
-// kijk of de naam overeenkomst met 'Selected'
-// zo ja, zet dan daar "Selected" op true in de array
-var i;
-for (i = 0; i < toppings.length; i++) {
-  if(toppings[i].Name == Selected) {
-    toppings[i].Selected = true;
-  } ;
+    // loop over alles in de Topping array
+    // kijk of de naam overeenkomst met 'Selected'
+    // zo ja, zet dan daar "Selected" op true in de array
+    var i;
+    for (i = 0; i < toppings.length; i++) {
+      if(toppings[i].Name == Selected) {
+        toppings[i].Selected = true;
+      } ;
+    }
+    displayAlert();
+    calculateTotalPrice();
 }
-displayAlert();
-calculateTotalPrice();
-}
 
-      tche.onclick = function () {selectTopping('Extra cheese');}
-      tchi.onclick = function () {selectTopping('Extra chicken');}
-      tbbq.onclick = function () {selectTopping('BBQ sauce');}
-      toli.onclick = function () {selectTopping('Olives');}
-
-
+tche.onclick = function () {selectTopping('Extra cheese');}
+tchi.onclick = function () {selectTopping('Extra chicken');}
+tbbq.onclick = function () {selectTopping('BBQ sauce');}
+toli.onclick = function () {selectTopping('Olives');}
+t4ch.onclick = function () {selectTopping('4 Cheese');}
 
 
 //SIZE PIZZA FUNCTIONS //
@@ -303,42 +310,42 @@ function selectSize(Selected) {
 
 
 function selectSlicing(Selected) {
-// loop over alles in de slicing array
-// kijk of de naam overeenkomst met 'Selected'
-// zo ja, zet dan daar "Selected" op true in de array
-var i;
-for (i = 0; i < slicing.length; i++) {
-  if(slicing[i].Name == Selected) {
-    slicing[i].Selected = true;
-  } else {
-    slicing[i].Selected = false;
-  };
-}
-displayAlert();
-calculateTotalPrice();
+    // loop over alles in de slicing array
+    // kijk of de naam overeenkomst met 'Selected'
+    // zo ja, zet dan daar "Selected" op true in de array
+    var i;
+    for (i = 0; i < slicing.length; i++) {
+      if(slicing[i].Name == Selected) {
+        slicing[i].Selected = true;
+      } else {
+        slicing[i].Selected = false;
+      };
+    }
+    displayAlert();
+    calculateTotalPrice();
 }
 
-        slun.onclick = function () {selectSlicing('Unsliced');}
-        sltwo.onclick = function () {selectSlicing('Two Slice');}
-        slfou.onclick = function () {selectSlicing('Four Slice');}
-        slsix.onclick = function () {selectSlicing('Six Slice');}
+slun.onclick = function () {selectSlicing('Unsliced');}
+sltwo.onclick = function () {selectSlicing('Two Slice');}
+slfou.onclick = function () {selectSlicing('Four Slice');}
+slsix.onclick = function () {selectSlicing('Six Slice');}
 
 function selectAdditional(Selected) {
-// loop over alles in de additional array
-// kijk of de naam overeenkomst met 'Selected'
-// zo ja, zet dan daar "Selected" op true in de array
-var i;
-for (i = 0; i < additional.length; i++) {
-if(additional[i].Name == Selected) {
-  additional[i].Selected = true;
-} ;
-}
-displayAlert();
-calculateTotalPrice();
+    // loop over alles in de additional array
+    // kijk of de naam overeenkomst met 'Selected'
+    // zo ja, zet dan daar "Selected" op true in de array
+    var i;
+    for (i = 0; i < additional.length; i++) {
+    if(additional[i].Name == Selected) {
+      additional[i].Selected = true;
+    } ;
+    }
+    displayAlert();
+    calculateTotalPrice();
 }
 
-              adel.onclick = function () {selectAdditional('Delivery');}
-              aban.onclick = function () {selectAdditional('Debit card');}
+adel.onclick = function () {selectAdditional('Delivery');}
+aban.onclick = function () {selectAdditional('Debit card');}
 
 
 function calculateTotalPrice() {
